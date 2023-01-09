@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_socketio import SocketIO
-
+import os
 app = Flask(__name__)
 socketio = SocketIO(app)
 @socketio.on('connect')
@@ -18,5 +18,5 @@ def on_message(message):
   socketio.emit('response', {'data': 'This is a response'})
 
 if __name__ == '__main__':
-  socketio.run(app, allow_unsafe_werkzeug=True,host='0.0.0.0')
+  socketio.run(app, allow_unsafe_werkzeug=True,host=os.getenv('HOST','0.0.0.0'),port=os.getenv('PORT','5000'))
 
