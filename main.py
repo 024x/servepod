@@ -18,5 +18,4 @@ def on_message(message):
   socketio.emit('response', {'data': 'This is a response'})
 
 if __name__ == '__main__':
-  socketio.run(app, allow_unsafe_werkzeug=True,host=os.getenv('HOST','0.0.0.0'),port=os.getenv('PORT','5000'))
-
+  socketio.run(app, host='0.0.0.0', port=5000)
